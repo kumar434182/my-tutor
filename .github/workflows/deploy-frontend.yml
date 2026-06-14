@@ -19,10 +19,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # IMPORTANT: Change this to your repository name!
-  # Example: If your repo is github.com/username/learning-platform, use '/learning-platform/'
-  # If using a custom domain, use '/'
-  BASE_HREF: '/learning-platform/'
+  BASE_HREF: '/my-tutor/'
 
 jobs:
   build-and-deploy:
@@ -49,7 +46,7 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --configuration production --base-href ${{ env.BASE_HREF }}
 
-      - name: Copy index.html to 404.html (Fixes SPA routing on GitHub Pages)
+      - name: Copy index.html to 404.html
         run: cp dist/learning-platform/browser/index.html dist/learning-platform/browser/404.html
 
       - name: Deploy to GitHub Pages

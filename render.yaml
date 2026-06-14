@@ -26,7 +26,3 @@ services:
     env: postgres
     plan: free
     region: ohio
-    ipAllowList: []
-    databaseName: learning_platform
-    user: postgres
-    postgresMajorVersion: 15
