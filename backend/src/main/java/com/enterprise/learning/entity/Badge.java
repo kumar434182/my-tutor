@@ -35,7 +35,6 @@ public class Badge {
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @ManyToMany(mappedBy = "badges")
-    @Builder.Default
-    private Set<User> earners = new HashSet<>();
+    // Relationship managed by UserBadge join table if needed
+    // For now, keeping it simple without explicit earners collection
 }
