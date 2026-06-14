@@ -20,4 +20,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Learning Platform';
+  // Trigger GitHub Pages deployment
 }
