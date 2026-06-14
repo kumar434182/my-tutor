@@ -4,11 +4,29 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpInterceptorFn,
+  HttpHandlerFn
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+
+export const jwtInterceptor: HttpInterceptorFn = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> => {
+  const token = localStorage.getItem('auth_token');
+  const isApiUrl = request.url.startsWith('http://localhost:8080') || 
+                   request.url.startsWith('https://api.learningplatform.com');
+
+  if (token && isApiUrl) {
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
+  return next(request);
+}
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

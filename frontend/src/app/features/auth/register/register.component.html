@@ -85,8 +85,8 @@
           placeholder="Confirm your password"
         />
         <div *ngIf="submitted && (f['confirmPassword'].errors || registerForm.errors)" class="invalid-feedback">
-          <div *ngIf="f['confirmPassword'].errors['required']">Confirm password is required</div>
-          <div *ngIf="registerForm.errors && registerForm.errors['passwordMismatch']">Passwords do not match</div>
+          <div *ngIf="f['confirmPassword']?.errors?.['required']">Confirm password is required</div>
+          <div *ngIf="registerForm.errors?.['passwordMismatch']">Passwords do not match</div>
         </div>
       </div>
 
