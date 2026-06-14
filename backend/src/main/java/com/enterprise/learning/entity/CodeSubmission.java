@@ -41,10 +41,10 @@ public class CodeSubmission {
     @Column(columnDefinition = "TEXT")
     private String errorMessage;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer testCasesPassed;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer totalTestCases;
 
     @Column(columnDefinition = "DECIMAL(5,2)")

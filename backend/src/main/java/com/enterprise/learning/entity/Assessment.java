@@ -36,17 +36,17 @@ public class Assessment {
     @Column(columnDefinition = "DECIMAL(5,2)")
     private Double passingMarks;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer timeLimit;
 
-    @Column(columnDefinition = "INT DEFAULT 1")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer maxAttempts;
 
-    @Column(columnDefinition = "DECIMAL(5,2) DEFAULT 0")
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)
     private Double negativeMarking;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20) DEFAULT 'DRAFT'")
+    @Column(columnDefinition = "VARCHAR(20)", nullable = false)
     private AssessmentStatus status = AssessmentStatus.DRAFT;
 
     @Column(updatable = false)

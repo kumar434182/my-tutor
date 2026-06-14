@@ -43,7 +43,7 @@ public class Lesson {
     private Double duration;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20) DEFAULT 'ACTIVE'")
+    @Column(columnDefinition = "VARCHAR(20)", nullable = false)
     private LessonStatus status = LessonStatus.ACTIVE;
 
     @Column(updatable = false)

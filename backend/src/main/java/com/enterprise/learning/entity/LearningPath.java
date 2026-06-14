@@ -33,7 +33,7 @@ public class LearningPath {
     private Double totalDuration;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20) DEFAULT 'ACTIVE'")
+    @Column(columnDefinition = "VARCHAR(20)", nullable = false)
     private PathStatus status = PathStatus.ACTIVE;
 
     @Column(updatable = false)

@@ -46,7 +46,7 @@ public class Course {
     private Double duration;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20) DEFAULT 'DRAFT'")
+    @Column(columnDefinition = "VARCHAR(20)", nullable = false)
     private CourseStatus status = CourseStatus.DRAFT;
 
     @Column(updatable = false)

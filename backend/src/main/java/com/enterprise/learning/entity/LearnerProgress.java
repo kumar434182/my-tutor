@@ -26,17 +26,17 @@ public class LearnerProgress {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @Column(columnDefinition = "DECIMAL(5,2) DEFAULT 0")
-    private Double progressPercentage;
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)
+    private Double progressPercentage = 0.0;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
-    private Integer lessonsCompleted;
+    @Column(columnDefinition = "INT", nullable = false)
+    private Integer lessonsCompleted = 0;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
-    private Integer totalLessons;
+    @Column(columnDefinition = "INT", nullable = false)
+    private Integer totalLessons = 0;
 
-    @Column(columnDefinition = "DECIMAL(5,2) DEFAULT 0")
-    private Double averageScore;
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)
+    private Double averageScore = 0.0;
 
     @Enumerated(EnumType.STRING)
     private ProgressStatus status;

@@ -29,7 +29,7 @@ public class Badge {
     @Column(length = 500)
     private String iconUrl;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer pointsRequired;
 
     @Column(updatable = false)

@@ -38,10 +38,10 @@ public class AssessmentResult {
     @Enumerated(EnumType.STRING)
     private ResultStatus status;
 
-    @Column(columnDefinition = "INT DEFAULT 1")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer attemptNumber;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer timeTaken;
 
     @Column(updatable = false)

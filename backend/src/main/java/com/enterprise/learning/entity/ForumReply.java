@@ -29,7 +29,7 @@ public class ForumReply {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer likes;
 
     @Column(updatable = false)

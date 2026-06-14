@@ -27,10 +27,10 @@ public class Analytics {
     @Column(length = 100)
     private String eventType;
 
-    @Column(columnDefinition = "INT DEFAULT 0")
+    @Column(columnDefinition = "INT", nullable = false)
     private Integer eventCount;
 
-    @Column(columnDefinition = "DECIMAL(10,2) DEFAULT 0")
+    @Column(columnDefinition = "DECIMAL(10,2)", nullable = false)
     private Double eventValue;
 
     @Column(updatable = false)

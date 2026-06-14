@@ -31,7 +31,7 @@ public class Notification {
     @Enumerated(EnumType.STRING)
     private NotificationType type;
 
-    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
+    @Column(columnDefinition = "BOOLEAN", nullable = false)
     private Boolean isRead;
 
     @Column(length = 500)
