@@ -1,36 +1,38 @@
 spring:
   application:
     name: learning-platform-api
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}
   
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:learning_platform}?sslmode=${DB_SSLMODE:disable}&allowMultiQueries=true&serverTimezone=UTC
-    username: ${DB_USER:learning_user}
-    password: ${DB_PASSWORD:learning_password}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=require&allowMultiQueries=true&serverTimezone=UTC
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
-      maximum-pool-size: 5
-      minimum-idle: 1
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
       auto-commit: true
   
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: false
+    open-in-view: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-        use_sql_comments: true
+        format_sql: false
+        use_sql_comments: false
         jdbc:
           batch_size: 20
           fetch_size: 50
+          batch_versioned_data: true
         order_inserts: true
         order_updates: true
+        connection:
+          provider_disables_autocommit: true
   
   security:
     user:
@@ -44,17 +46,21 @@ server:
   error:
     include-message: always
     include-binding-errors: always
+  compression:
+    enabled: true
+    min-response-size: 1024
 
 jwt:
-  secret: your-super-secret-jwt-key-change-in-production-minimum-32-characters-long
+  secret: ${JWT_SECRET:your-super-secret-jwt-key-change-in-production-minimum-32-characters-long}
   expiration: 900000
   refresh-expiration: 604800000
 
 logging:
   level:
-    root: INFO
-    com.enterprise.learning: DEBUG
-    org.springframework.security: DEBUG
+    root: WARN
+    com.enterprise.learning: INFO
+    org.springframework.security: WARN
+    org.hibernate: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
 
