@@ -34,10 +34,10 @@ public class DiscussionForum {
     @JoinColumn(name = "created_by", nullable = false)
     private User createdBy;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer replyCount;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer viewCount;
 
     @Column(updatable = false)

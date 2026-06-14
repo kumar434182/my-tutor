@@ -29,10 +29,10 @@ public class LearnerProgress {
     @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)
     private Double progressPercentage = 0.0;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer lessonsCompleted = 0;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer totalLessons = 0;
 
     @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)

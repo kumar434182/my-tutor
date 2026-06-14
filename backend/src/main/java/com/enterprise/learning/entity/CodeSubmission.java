@@ -26,7 +26,7 @@ public class CodeSubmission {
     @JoinColumn(name = "learner_id", nullable = false)
     private User learner;
 
-    @Column(columnDefinition = "LONGTEXT")
+    @Column(columnDefinition = "TEXT")
     private String sourceCode;
 
     @Enumerated(EnumType.STRING)
@@ -41,10 +41,10 @@ public class CodeSubmission {
     @Column(columnDefinition = "TEXT")
     private String errorMessage;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer testCasesPassed;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer totalTestCases;
 
     @Column(columnDefinition = "DECIMAL(5,2)")

@@ -29,7 +29,7 @@ public class Feedback {
     @Enumerated(EnumType.STRING)
     private FeedbackType type;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer rating;
 
     @Column(columnDefinition = "TEXT")

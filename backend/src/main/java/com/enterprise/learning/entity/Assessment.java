@@ -36,10 +36,10 @@ public class Assessment {
     @Column(columnDefinition = "DECIMAL(5,2)")
     private Double passingMarks;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer timeLimit;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer maxAttempts;
 
     @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)

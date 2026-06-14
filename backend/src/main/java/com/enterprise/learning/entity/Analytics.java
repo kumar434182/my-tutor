@@ -27,7 +27,7 @@ public class Analytics {
     @Column(length = 100)
     private String eventType;
 
-    @Column(columnDefinition = "INT", nullable = false)
+    @Column(columnDefinition = "INTEGER", nullable = false)
     private Integer eventCount;
 
     @Column(columnDefinition = "DECIMAL(10,2)", nullable = false)
