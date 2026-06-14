@@ -38,21 +38,21 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: './frontend/package-lock.json'
+          cache-dependency-path: 'frontend/package-lock.json'
 
       - name: Install Dependencies
         run: npm ci
 
       - name: Build Angular App
-        run: npm run build -- --configuration production --base-href ${{ env.BASE_HREF }}
+        run: npm run build:prod -- --base-href=${{ env.BASE_HREF }}
 
       - name: Copy index.html to 404.html
-        run: cp dist/learning-platform/browser/index.html dist/learning-platform/browser/404.html
+        run: cp dist/learning-platform-ui/browser/index.html dist/learning-platform-ui/browser/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/dist/learning-platform/browser
+          publish_dir: ./frontend/dist/learning-platform-ui/browser
           publish_branch: gh-pages
           commit_message: "Deploy frontend to GitHub Pages"
