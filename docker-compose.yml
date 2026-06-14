@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: learning-platform-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: learning_platform
+      MYSQL_USER: learning_user
+      MYSQL_PASSWORD: learning_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docs/database_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - learning-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    restart: unless-stopped
+
+  # Spring Boot Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: learning-platform-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/learning_platform
+      SPRING_DATASOURCE_USERNAME: learning_user
+      SPRING_DATASOURCE_PASSWORD: learning_password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_SHOW_SQL: "false"
+      SPRING_PROFILES_ACTIVE: docker
+      JWT_SECRET: your-super-secret-jwt-key-change-in-production-minimum-32-characters-long
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - learning-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/swagger-ui.html"]
+      timeout: 20s
+      retries: 10
+    restart: unless-stopped
+
+  # Angular Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: learning-platform-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - learning-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+
+networks:
+  learning-network:
+    driver: bridge
