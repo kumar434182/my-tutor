@@ -10,13 +10,19 @@ services:
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
-      - key: SPRING_DATASOURCE_URL
+      - key: DB_HOST
         sync: false
-      - key: SPRING_DATASOURCE_USERNAME
+      - key: DB_PORT
+        value: "5432"
+      - key: DB_NAME
         sync: false
-      - key: SPRING_DATASOURCE_PASSWORD
+      - key: DB_USER
         sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SSLMODE
+        value: require
       - key: JWT_SECRET
         sync: false
       - key: PORT
-        value: 8080
+        sync: false
